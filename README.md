@@ -18,3 +18,20 @@
 --- 
 ### 类型包：...
 C++ 语法符号，称为“ 参数包展开运算符（pack expansion operator）”。
+
+### 模版类型推导
+- 示例函数模版：
+```cpp
+template<typename T>
+void f(ParamType param);
+f(param);
+```
+
+- 保持constness
+  - 形参：T& param
+    - 入参：const int&/const int -> T: const int, param: const int& 
+    - 入参：int/int& -> T: int, param: int&
+  - 形参： const T& param
+    - 入参： int/int&/const int/const int& -> T: const int, param: const int&
+
+
