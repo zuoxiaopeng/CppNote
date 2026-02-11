@@ -45,6 +45,22 @@ f(param);
   - 拷贝对象成员指针变量指针
 <br>
 
+### 赋值构造
+- copy and swap
+``` cpp
+void swap(MyClass& First, MyClass& Second) noexcept
+	{
+		using std::swap;
+		swap(First.Data, Second.Data);
+	}
+	MyClass& operator=(MyClass Other) // 深拷贝
+	{
+		swap(*this, Other);
+		return *this;
+	}
+```
+<br>
+
 ## 设计模式
 ### 单例
 ```cpp
