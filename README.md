@@ -37,9 +37,36 @@ f(param);
 <br>
 
 
-## 构造
+## 构造函数
 ### 深/浅拷贝
 - 深拷贝
   - 拷贝对象成员指针变量指向的对象
 - 浅拷贝
   - 拷贝对象成员指针变量指针
+<br>
+
+## 设计模式
+### 单例
+```cpp
+class Singleton
+{
+public:
+	Singleton(const Singleton&) = delete;
+	Singleton& operator=(const Singleton&) = delete;
+
+	static Singleton& GetInstance()
+	{
+		static Singleton Instance;
+		return Instance;
+	}
+
+private:
+	Singleton() = default;
+	~Singleton() = default;
+};
+```
+- 注意点
+  - 删除拷贝/赋值构造
+  - 私有构造/析构
+  - 静态成员函数，静态局部变量
+  - c++11起 保证静态局部变量线程安全，c++17 可以使用inline static Singleton instance 作为私有成员变量
